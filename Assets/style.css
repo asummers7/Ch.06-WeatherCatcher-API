@@ -1,0 +1,9 @@
+.jumbotron {
+    background-image: linear-gradient(to right, blue, purple);
+    color: white;
+}
+
+label[for="cityinput"]  {
+    font-weight: bold;
+    font-size: 150%;
+}
