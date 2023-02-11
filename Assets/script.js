@@ -1,10 +1,11 @@
 var apiKey = "7bf26e19ed8bc5e82daa1204d19e541e";
 var weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=${apiKey}`;
 var coordinatesUrl =
-  "http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=7bf26e19ed8bc5e82daa1204d19e541e";
+  "http://api.openweathermap.org/geo/1.0/direct?q=LasVegas&limit=5&appid=7bf26e19ed8bc5e82daa1204d19e541e";
 var button = document.getElementById('submit');
 
-function getApi() {
+function getApi(event) {
+  event.preventDefault();
   fetch(coordinatesUrl)
     .then(function (response) {
       return response.json();
