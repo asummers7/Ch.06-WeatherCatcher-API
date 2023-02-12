@@ -19,14 +19,19 @@
     <main>
         <div class="container">
             <div class="row">
-                <div class="col-4 col-md-4 col-lg-4 border-bottom">
-                    <form>
-                        <div class="form-group">
-                          <label for="cityinput">Search for a City:</label>
-                          <input type="submission" class="form-control" id="cityinput" aria-describedby="emailHelp" placeholder="Salt Lake City">
-                        </div>
-                        <button id="submit" type="search" class="btn btn-primary w-100 mb-3">Search</button>
-                    </form>
+                <div class="col-4 col-md-4 col-lg-4">
+                    <div class="border-bottom" id="formContainer">
+                        <form>
+                            <div class="form-group">
+                              <label for="cityinput">Search for a City:</label>
+                              <input type="submission" class="form-control" id="city-input" aria-describedby="emailHelp" placeholder="Salt Lake City">
+                            </div>
+                            <button id="submit" type="search" class="btn btn-primary w-100 mb-3">Search</button>
+                        </form>
+                    </div>
+                    <div class="w-100">
+                        <ul id="citySearch"></ul>
+                    </div>
                 </div>
                 <div class="col-8 col-md-8 col-lg-8">
                     <div class="row">results</div>
