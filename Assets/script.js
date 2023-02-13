@@ -66,6 +66,7 @@ function jumboDate () {
 }
 
 function weatherCards(data) {
+  document.getElementById('cards').innerHTML=" ";
   for (let i = 0; i < data.length; i++) {
     if (data[i].dt_txt.includes("03:00:00")){
       var date = dayjs(data[i].dt_txt).format("M/D/YYYY");
