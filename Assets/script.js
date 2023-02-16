@@ -82,7 +82,7 @@ function jumboDate (data, name1) {
   var format = dayjs(currentDay.$d).format("M/D/YYYY")
   console.log(format);
   jumboName.textContent = `${name1} (${format})`;
-  icon.setAttribute('src', `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
+  icon.setAttribute('src', `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
   temp.textContent = `Temp: ${data.main.temp} F`;
   wind.textContent = `Wind: ${data.wind.speed} MPH`;
   humidity.textContent = `Humidity: ${data.main.humidity}%`
@@ -97,7 +97,7 @@ function weatherCards(data) {
       var card = `<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
       <div class="card-header"><h6>${date}</h6></div>
       <div class="card-body">
-       <img src="http://openweathermap.org/img/wn/${data[i].weather[0].icon}@2x.png">
+       <img src="https://openweathermap.org/img/wn/${data[i].weather[0].icon}@2x.png">
         <h5 class="card-title">Temp: ${data[i].main.temp} F</h5>
         <h5 class="card-title">Humidity: ${data[i].main.humidity} %</h5>
         <h5 class="card-title">Wind: ${data[i].wind.speed} MPH</h5>
