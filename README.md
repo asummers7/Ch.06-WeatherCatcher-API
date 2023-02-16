@@ -6,9 +6,6 @@
 This is an introduction challenge for the use of API's. It is a simple weather dashboard that obtains the current weather as well as the 5 day forcast from openweathermap.org. The functionality allows the user to enter any city name and the weather and forecast be generated for that city. The dashboard also allows user to click on previous searched cities to populate the weather once more. 
 
 ## Table of Contents
-- [Ch.06-Weathercatcher-Api](#ch06-weathercatcher-api)
-  - [Description](#description)
-  - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
   - [Usage](#usage)
   - [License](#license)
