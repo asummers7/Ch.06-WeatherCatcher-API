@@ -5,6 +5,7 @@ var jumboName = document.getElementById('name');
 var temp = document.getElementById('temp');
 var wind = document.getElementById('wind');
 var humidity = document.getElementById('humidity');
+var icon = document.getElementById('icon')
 
 function submit (event) {
   event.preventDefault();
@@ -21,33 +22,53 @@ function coordinates() {
 
   localStorage.setItem('city', cityName);
   cityList.append(citySearch);
-  var coordinatesUrl =`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
-  fetch(coordinatesUrl)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      var lat = data.coord.lat;
-      var lon = data.coord.lon;
-     weatherApi(lat,lon,apiKey);
-    })
-    .catch(function(error){
-        console.log("error message below")
-        console.log(error);
-    });
-}
-
-
-function weatherApi (a,b,c) {
-  var weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${a}&lon=${b}&appid=${c}&units=imperial`;
+  latLon(cityName);
+  // var coordinatesUrl =`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
+  // fetch(coordinatesUrl)
+  //   .then(function (response) {
+    //     return response.json();
+    //   })
+    //   .then(function (data) {
+      //     console.log(data);
+      //     var lat = data.coord.lat;
+      //     var lon = data.coord.lon;
+      //     jumboDate(data);
+      //    weatherApi(lat,lon,apiKey);
+      //   })
+      //   .catch(function(error){
+        //       console.log("error message below")
+        //       console.log(error);
+        //   });
+      }
+      function latLon (cityName) {
+        var coordinatesUrl =`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
+      fetch(coordinatesUrl)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          console.log(data);
+          var lat = data.coord.lat;
+          var lon = data.coord.lon
+          var name1 = data.name;
+          jumboDate(data, name1);
+         weatherApi(lat,lon,apiKey);
+        })
+        .catch(function(error){
+            console.log("error message below")
+            console.log(error);
+        });
+      }
+      
+      
+      function weatherApi (a,b,c) {
+        var weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${a}&lon=${b}&appid=${c}&units=imperial`;
   fetch (weatherUrl)
   .then(function(response){
     return response.json();
   })
   .then(function(data){
     console.log(data);
-    jumboDate();
     weatherCards(data.list);
   })
   .catch(function(error){
@@ -55,13 +76,16 @@ function weatherApi (a,b,c) {
   })
 }
 
-function jumboDate () {
-  var city = localStorage.getItem('city');
+function jumboDate (data, name1) {
   var currentDay = dayjs();
   console.log(currentDay.$d);
   var format = dayjs(currentDay.$d).format("M/D/YYYY")
   console.log(format);
-  jumboName.textContent = `${city} (${format})`
+  jumboName.textContent = `${name1} (${format})`;
+  icon.setAttribute('src', `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
+  temp.textContent = `Temp: ${data.main.temp} F`;
+  wind.textContent = `Wind: ${data.wind.speed} MPH`;
+  humidity.textContent = `Humidity: ${data.main.humidity}%`
 
 }
 
@@ -84,6 +108,11 @@ function weatherCards(data) {
     }
   }
 }
-
+function previous (event) {
+  var el = event.target;
+  console.log(el.value);
+  latLon(el.value);
+}
 
 button.addEventListener("click", submit);
+cityList.addEventListener('click', previous)

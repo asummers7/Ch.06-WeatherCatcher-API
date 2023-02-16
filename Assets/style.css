@@ -22,3 +22,16 @@ ul > button {
     border-radius: 5px;
     padding: 5px;
 }
+#jumbo {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+#icon {
+    width: 40px;
+    height: 30px;
+}
+#name {
+    font-weight: bold;
+    font-size: 125%;
+}
